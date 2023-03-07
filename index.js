@@ -14,6 +14,7 @@ const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const verify = require("./verifyToken");
 
 const app = express();
 const port = 8000;
@@ -62,6 +63,15 @@ app.post("/login", async (req, res) => {
   res.header("auth-token", token).send(token);
 
   // res.send("Login berhasil");
+});
+
+app.get("/", verify, (req, res) => {
+  res.json({
+    startup: {
+      namaStartup: "Alpha Startup",
+      description: "Startup bergerak di bidang teknologi",
+    },
+  });
 });
 
 app.listen(port, () => {
