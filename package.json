@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "ansi-regex": "^5.0.1",
     "ansi-styles": "^4.3.0",
+    "bcryptjs": "^2.4.3",
     "cliui": "^7.0.4",
     "color-convert": "^2.0.1",
     "color-name": "^1.1.4",
     "core-js": "^3.6.5",
     "dom-storage": "^2.1.0",
+    "dotenv": "^16.0.3",
     "emoji-regex": "^8.0.0",
     "escalade": "^3.1.1",
     "faye-websocket": "^0.11.3",
@@ -20,6 +23,7 @@
     "http-parser-js": "^0.5.8",
     "idb": "^3.0.2",
     "is-fullwidth-code-point": "^3.0.0",
+    "jsonwebtoken": "^9.0.0",
     "lodash.camelcase": "^4.3.0",
     "long": "^4.0.0",
     "node-fetch": "^2.6.7",
@@ -46,7 +50,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index"
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
