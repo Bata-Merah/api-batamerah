@@ -15,6 +15,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const verify = require("./verifyToken");
+const serverless = require("serverless-http");
+const router = express.Router();
 
 const app = express();
 const port = 8000;
@@ -77,3 +79,7 @@ app.get("/", verify, (req, res) => {
 app.listen(port, () => {
   console.log("Server berhasil berjalan");
 });
+
+app.use(`/.netlify/functions/api`, router);
+
+module.exports.handler = serverless(app);
