@@ -25,12 +25,13 @@ const {
 } = require("./model/Startup/startupValidation");
 const { Startup } = require("./model/Startup/Startup");
 const {
-  registerAdministratorValidation, loginAdministratorValidation,
+  registerAdministratorValidation,
+  loginAdministratorValidation,
 } = require("./model/Administrator/administratorValidation");
 const { Administrator } = require("./model/Administrator/Administrator");
 
 const app = express();
-const port = 80;
+const port = 3000;
 
 const userDb = db.collection("users").doc("user");
 const startupDb = db.collection("users").doc("startupUser");
@@ -38,6 +39,15 @@ const adminDb = db.collection("users").doc("admin");
 
 app.use(express.json());
 app.use(cors());
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5173");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 // User Biasa atau Investor
 app.post("/register/user", async (req, res) => {
@@ -171,7 +181,6 @@ app.post("/login/admin", async (req, res) => {
   const token = jwt.sign({ _id: dataUser.id }, process.env.TOKEN_SECRET);
   res.header("auth-token", token).send(token);
 });
-
 
 // List Startup
 app.get("/", verify, (req, res) => {
