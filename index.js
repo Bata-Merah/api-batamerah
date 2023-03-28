@@ -184,12 +184,21 @@ app.post("/login/admin", async (req, res) => {
 
 // List Startup
 app.get("/", verify, (req, res) => {
-  res.json({
-    startup: {
+  res.json(
+    [
+      {
       namaStartup: "Alpha Startup",
       description: "Startup bergerak di bidang teknologi",
     },
-  });
+    {
+      namaStartup: "Alpha Startup 2",
+      description: "Startup bergerak di bidang teknologi",
+    },{
+      namaStartup: "Alpha Startup 3",
+      description: "Startup bergerak di bidang teknologi",
+    }
+]
+  );
 });
 
 app.listen(port, () => {
